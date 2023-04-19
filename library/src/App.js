@@ -3,11 +3,14 @@ import React, { useState, useEffect } from 'react';
 // import LibraryApi from './api/api';
 
 import './App.css';
+import SearchForm from './books/SearchForm';
 
 function App() {
 	const [ data, setData ] = useState('');
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState('');
+	const [ search, setSearch ] = useState('');
+	const [ searchResults, setSearchResults ] = useState([]);
 
 	useEffect(() => {
 		setLoading(true);
@@ -33,19 +36,49 @@ function App() {
 
 	let array = data.docs;
 
+	const searchHandler = (search) => {
+		setSearch(search);
+		if (search !== '') {
+			const newBookList = array.filter((book) => {
+				return Object.values(book).join(' ').toLowerCase().includes(search.toLowerCase());
+			});
+			setSearchResults(newBookList);
+		} else {
+			setSearchResults(array);
+		}
+	};
+	//console.log(searchResults);
+
 	return (
 		<div className="container">
-			<ul>
-				{array.map((item, i) => {
-					return (
-						<li key={i}>
-							<i className="fa fa=book" />
-							&nbsp;
-							{item.title}
-						</li>
-					);
-				})}
-			</ul>
+			<SearchForm term={search} searchKeyword={searchHandler} />
+			{/* if search box is empty */}
+			{search.length < 1 ? (
+				<ul className="list">
+					{array.map((item, i) => {
+						return (
+							<li key={i} className="list-item">
+								<i className="fa fa=book" />
+								&nbsp;
+								{item.title}
+							</li>
+						);
+					})}
+				</ul>
+			) : (
+				// if search box has characters
+				<ul className="list">
+					{searchResults.map((item, i) => {
+						return (
+							<li key={i} className="list-item">
+								<i className="fa fa=book" />
+								&nbsp;
+								{item.title}
+							</li>
+						);
+					})}
+				</ul>
+			)}
 		</div>
 	);
 
