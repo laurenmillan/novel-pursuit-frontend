@@ -1,1 +1,6 @@
-
+.container {
+	width: 90%;
+	margin: auto;
+	justify-content: center;
+	text-align: center;
+}
