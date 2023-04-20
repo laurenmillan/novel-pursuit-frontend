@@ -41,10 +41,10 @@ class LibraryApi {
 		return res.user;
 	}
 
-	/** Get details on a book by id. */
+	/** Get details on a book by isbn. */
 
-	static async getBook(id) {
-		const LIBRARY_BOOK_URL = `https://openlibrary.org/works/${id}.json`;
+	static async getBook(isbn) {
+		const LIBRARY_BOOK_URL = `https://openlibrary.org/isbn/${isbn}.json`;
 		const res = await axios.get(LIBRARY_BOOK_URL);
 		return res.data;
 	}
@@ -56,6 +56,19 @@ class LibraryApi {
 		const res = await axios.get(LIBRARY_SEARCH_URL, {
 			params: {
 				title: title,
+				limit: 10 // Set a limit to control the number of results
+			}
+		});
+		return res.data.docs;
+	}
+
+	/** Get list of books (filtered by author if not undefined). */
+
+	static async getBooksByAuthor(author) {
+		const LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
+		const res = await axios.get(LIBRARY_SEARCH_URL, {
+			params: {
+				author_name: author,
 				limit: 10 // Set a limit to control the number of results
 			}
 		});

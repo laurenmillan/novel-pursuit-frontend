@@ -14,7 +14,7 @@ function App() {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch('https://openlibrary.org/search.json?author=tolkien&sort=new')
+		fetch('https://openlibrary.org/search.json?q=the+lord+of+the+rings')
 			.then((response) => response.json())
 			.then((data) => {
 				setData(data);
@@ -30,6 +30,7 @@ function App() {
 	if (error) {
 		return <pre>{JSON.stringify(error, null, 2)}</pre>;
 	}
+
 	if (!data) {
 		return null;
 	}
