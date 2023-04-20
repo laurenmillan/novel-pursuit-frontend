@@ -12,6 +12,11 @@
 	font-weight: bold;
 }
 
+.navbar-brand {
+	font-size: 25px;
+	margin-left: 15px;
+}
+
 nav a.navbar-brand {
 	color: #f0f2f5;
 }

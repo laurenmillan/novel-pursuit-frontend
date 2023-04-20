@@ -10,7 +10,7 @@ function NavBar() {
 		<div>
 			<Navbar bg="dark" expand="md" className="navbar-dark">
 				<Navbar.Brand as={NavLink} to="/">
-					Library
+					Novel Pursuit
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
