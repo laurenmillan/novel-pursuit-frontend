@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import LibraryApi from './api/api';
 
-import './App.css';
 import Home from './Components/Home';
 import Login from './Components/LoginForm';
 import Signup from './Components/SignupForm';
-import Profile from './Components/Profile';
+import Profile from './Components/ProfileForm';
 import Bookmarks from './Components/Bookmarks';
 import NotFound from './404/404';
-// import SearchForm from './books/SearchForm';
 
-const App = () => {
+/** Routing Logic. */
+
+const AppRoutes = () => {
 	return (
 		<Routes>
 			<Route exact path="/" element={<Home />} />
@@ -24,4 +23,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default AppRoutes;
