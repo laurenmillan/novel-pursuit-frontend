@@ -9,7 +9,7 @@ import Signup from './Components/SignupForm';
 import Profile from './Components/Profile';
 import Bookmarks from './Components/Bookmarks';
 import NotFound from './404/404';
-// import SearchForm from './books/SearchForm';
+import Main from './Components/Main';
 import NavBar from './Components/NavBar';
 
 /** Library App logic. */
@@ -18,6 +18,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<NavBar />
+			<Main />
 			<Routes>
 				<Route exact path="/" element={<Home />} />
 				<Route exact path="/login" element={<Login />} />
