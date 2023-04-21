@@ -10,8 +10,9 @@ import Profile from './Components/Profile';
 import Bookmarks from './Components/Bookmarks';
 import NotFound from './404/404';
 // import SearchForm from './books/SearchForm';
-
 import NavBar from './Components/NavBar';
+
+/** Library App logic. */
 
 const App = () => {
 	return (

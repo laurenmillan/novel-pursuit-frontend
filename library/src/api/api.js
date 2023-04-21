@@ -51,7 +51,7 @@ class LibraryApi {
 
 	/** Get list of books (filtered by title if not undefined). */
 
-	static async getBooks(title) {
+	static async getBooksByTitle(title) {
 		const LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
 		const res = await axios.get(LIBRARY_SEARCH_URL, {
 			params: {
