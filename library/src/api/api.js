@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
+LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
 
 /** API Class.
  *
@@ -52,11 +53,10 @@ class LibraryApi {
 	/** Get list of books (filtered by title if not undefined). */
 
 	static async getBooksByTitle(title) {
-		const LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
 		const res = await axios.get(LIBRARY_SEARCH_URL, {
 			params: {
 				title: title,
-				limit: 10 // Set a limit to control the number of results
+				limit: 20 // Set a limit to control the number of results
 			}
 		});
 		return res.data.docs;
@@ -65,11 +65,10 @@ class LibraryApi {
 	/** Get list of books (filtered by author if not undefined). */
 
 	static async getBooksByAuthor(author) {
-		const LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
 		const res = await axios.get(LIBRARY_SEARCH_URL, {
 			params: {
 				author_name: author,
-				limit: 10 // Set a limit to control the number of results
+				limit: 20 // Set a limit to control the number of results
 			}
 		});
 		return res.data.docs;
