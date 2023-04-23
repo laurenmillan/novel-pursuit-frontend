@@ -6,8 +6,6 @@ LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
 /** API Class.
  *
  * Static class tying together methods used to get/send to to the API.
- * There shouldn't be any frontend-specific stuff here, and there shouldn't
- * be any API-aware stuff elsewhere in the frontend.
  *
  */
 
@@ -18,8 +16,7 @@ class LibraryApi {
 	static async request(endpoint, data = {}, method = 'get') {
 		console.debug('API Call:', endpoint, data, method);
 
-		//there are multiple ways to pass an authorization token, this is how you pass it in the header.
-		//this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
+		// pass authorization token in the header.
 		const url = `${BASE_URL}/${endpoint}`;
 		const headers = { Authorization: `Bearer ${LibraryApi.token}` };
 		const params = method === 'get' ? data : {};
