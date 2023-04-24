@@ -11,6 +11,7 @@ import Bookmarks from './Components/Bookmarks';
 import NotFound from './404/404';
 import Main from './Components/Main';
 import NavBar from './Components/NavBar';
+import './Components/style.css'
 
 /** Library App logic. */
 
