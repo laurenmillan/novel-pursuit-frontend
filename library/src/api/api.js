@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
-LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
+const LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
 
 /** API Class.
  *
