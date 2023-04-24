@@ -5,6 +5,13 @@ import './style.css';
 import Card from './Card';
 import LibraryApi from '../api/api';
 
+/** Renders search functionality.
+ * 
+ * -Allows a user to search by title, author, or ISBN.
+ * -The component will display the results as cards.
+ * 
+*/
+
 const Main = () => {
 	const [ search, setSearch ] = useState('');
 	const [ bookData, setBookData ] = useState([]); // store results

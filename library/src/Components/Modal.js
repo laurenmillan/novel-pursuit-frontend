@@ -4,7 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 /** Renders book modal.
  * 
- * -Displays book information
+ * -Displays book information for specific book selected by user.
  * 
  */
 

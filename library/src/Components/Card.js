@@ -1,6 +1,12 @@
 import React from 'react';
 import Modal from './Modal';
 
+/** Renders book card.
+ * 
+ * -Displays information about the book.
+ * 
+ */
+
 const Card = ({ book }) => {
 	console.log(book);
 
