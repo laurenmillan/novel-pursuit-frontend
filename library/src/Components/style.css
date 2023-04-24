@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&family=Poppins:wght@300&family=ZCOOL+XiaoWei&display=swap');
+
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.search input {
+	width: 350px;
+	height: 35px;
+	padding: 0 0.5rem;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.search button {
+	outline: none;
+	border: none;
+	height: 35px;
+	padding: 0 0.5rem;
+}
+
+.responsive-image {
+	width: 40%; /* Adjust the width to your desired percentage */
+	height: auto;
+	object-fit: cover;
+	display: block;
+	margin: 0 auto; /* Center the image */
+}
+
+.container {
+	width: 20%;
+	margin: 0 auto;
+	margin-top: 25px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+	grid-gap: 20px;
+	box-sizing: border-box;
+}
