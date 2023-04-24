@@ -62,9 +62,9 @@ const Main = () => {
 					<p>Loading...</p>
 				) : bookData.length > 0 ? (
 					bookData.map((book) => <Card key={book.key} book={book} />)
-				) : (
+				) : search !== '' ? (
 					<p>No books found. Please try your search again.</p>
-				)}
+				) : null}
 			</div>
 		</React.Fragment>
 	);
