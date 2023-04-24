@@ -4,11 +4,13 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
 import Card from './Card';
 import LibraryApi from '../api/api';
+import Modal from './Modal';
 
-/** Renders search functionality.
+/** Renders search functionality and book information modal.
  * 
  * -Allows a user to search by title, author, or ISBN.
  * -The component will display the results as cards.
+ * -When a user clicks on a card, a modal with the book information is displayed.
  * 
 */
 
@@ -16,6 +18,10 @@ const Main = () => {
 	const [ search, setSearch ] = useState('');
 	const [ bookData, setBookData ] = useState([]); // store results
 	const [ loading, setLoading ] = useState(false);
+
+	// Render book modal
+	const [ showModal, setShowModal ] = useState(false);
+	const [ selectedBook, setSelectedBook ] = useState(null);
 
 	const searchBook = async (evt) => {
 		if (evt.key === 'Enter') {
@@ -31,6 +37,16 @@ const Main = () => {
 				setLoading(false); // Set loading to false after fetching data
 			}
 		}
+	};
+
+	const openModal = (book) => {
+		setSelectedBook(book);
+		setShowModal(true);
+	};
+
+	const closeModal = () => {
+		setShowModal(false);
+		setSelectedBook(null);
 	};
 
 	return (
@@ -61,11 +77,12 @@ const Main = () => {
 				{loading ? (
 					<p>Loading...</p>
 				) : bookData.length > 0 ? (
-					bookData.map((book) => <Card key={book.key} book={book} />)
+					bookData.map((book) => <Card key={book.key} book={book} openModal={openModal} />)
 				) : search !== '' ? (
 					<p>No books found. Please try your search again.</p>
 				) : null}
 			</div>
+			<Modal show={showModal} item={selectedBook} closeModal={closeModal} />
 		</React.Fragment>
 	);
 };

@@ -8,7 +8,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
  * 
  */
 
-const Modal = ({ show, item }) => {
+const Modal = ({ show, item, closeModal }) => {
 	if (!show) {
 		return null;
 	}
@@ -17,7 +17,7 @@ const Modal = ({ show, item }) => {
 		<React.Fragment>
 			<div className="overlay">
 				<div className="overlay-inner">
-					<button className="close">
+					<button className="close" onClick={closeModal}>
 						<FontAwesomeIcon icon={faXmark} />
 					</button>
 					<div className="inner-box">
