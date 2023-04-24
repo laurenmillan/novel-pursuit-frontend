@@ -1,27 +1,29 @@
-.navbar {
-	background-color: #343a40;
+.custom-navbar {
 	margin-bottom: 4rem;
+	width: 100%;
+	background-color: #f8f9fa;
+	padding: 0.5rem 1rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link {
-	color: white !important;
+	color: #333 !important;
+	font-size: 1rem;
 }
 
 .nav-link:hover,
 .nav-link.active {
 	font-weight: bold;
+	text-decoration: underline;
 }
 
 .navbar-brand {
 	font-size: 25px;
 	margin-left: 15px;
-}
-
-nav a.navbar-brand {
-	color: #f0f2f5;
+	color: #333;
 }
 
 nav a.navbar-brand:hover {
 	font-weight: bold;
-	color: #f0f2f5;
+	text-decoration: underline;
 }

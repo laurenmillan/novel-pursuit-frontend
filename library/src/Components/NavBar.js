@@ -8,7 +8,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 function NavBar() {
 	return (
 		<div>
-			<Navbar bg="dark" expand="md" className="navbar-dark">
+			<Navbar expand="md" className="custom-navbar">
 				<Navbar.Brand as={NavLink} to="/">
 					Novel Pursuit
 				</Navbar.Brand>
