@@ -11,6 +11,7 @@ import Modal from './Modal';
  * -Allows a user to search by title, author, or ISBN.
  * -The component will display the results as cards.
  * -When a user clicks on a card, a modal with the book information is displayed.
+ * -A message will appear if a book cannot be located.
  * 
 */
 
@@ -18,6 +19,7 @@ const Main = () => {
 	const [ search, setSearch ] = useState('');
 	const [ bookData, setBookData ] = useState([]); // store results
 	const [ loading, setLoading ] = useState(false);
+	const [ searchPerformed, setSearchPerformed ] = useState(false);
 
 	// Render book modal
 	const [ showModal, setShowModal ] = useState(false);
@@ -26,6 +28,7 @@ const Main = () => {
 	const searchBook = async (evt) => {
 		if (evt.key === 'Enter') {
 			setLoading(true);
+			setSearchPerformed(true); // Set searchPerformed to true when a search is performed
 
 			try {
 				const results = await LibraryApi.getBooks(search); // Pass search variable
@@ -72,15 +75,15 @@ const Main = () => {
 					</button>
 				</div>
 			</div>
-			<img src="./bg2.png" className="responsive-image" alt="background-image" />
+			<img src="./bg2.png" className="responsive-image" alt="background" />
 			<div className="container">
-				{loading ? (
-					<p>Loading...</p>
-				) : bookData.length > 0 ? (
-					bookData.map((book) => <Card key={book.key} book={book} openModal={openModal} />)
-				) : search !== '' ? (
-					<p>No books found. Please try your search again.</p>
-				) : null}
+				{loading && <p>Loading...</p>}
+				{!loading &&
+					bookData.length > 0 &&
+					bookData.map((book) => <Card key={book.key} book={book} openModal={openModal} />)}
+				{!loading &&
+				searchPerformed &&
+				bookData.length === 0 && <p>No books found. Please try your search again.</p>}
 			</div>
 			<Modal show={showModal} item={selectedBook} closeModal={closeModal} />
 		</React.Fragment>

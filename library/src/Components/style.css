@@ -107,7 +107,7 @@
 	padding: 1.5rem;
 	position: relative;
 	box-sizing: border-box;
-	overflow: hidden;
+	overflow-y: auto;
 	font-size: 1.3rem;
 }
 
@@ -138,7 +138,7 @@
 	color: green;
 }
 
-.overlay-inner .inner-box h4 {
+.overlay-inner .inner-box h5 {
 	color: blue;
 }
 
@@ -151,10 +151,4 @@
 	color: white;
 	font-weight: bold;
 	padding: 0.3rem 0.5rem;
-}
-
-.overlay-inner .description {
-	margin-top: 2rem;
-	text-align: justify;
-	font-size: 13px;
 }

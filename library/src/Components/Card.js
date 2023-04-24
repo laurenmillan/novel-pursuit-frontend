@@ -1,25 +1,30 @@
 import React from 'react';
-import Modal from './Modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 /** Renders book card.
  * 
  * -Displays information about the book.
+ * -Displays a book icon if a book cover cannot be located.
  * 
  */
 
 const Card = ({ book, openModal }) => {
 	console.log(book);
 
+	const hasCover = book.cover_i;
+	const coverUrl = hasCover ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null;
+	const authors = book.author_name ? book.author_name.join(', ') : '';
+
 	return (
 		<React.Fragment>
 			<div className="card" onClick={() => openModal(book)}>
-				<img src={book.cover_url} alt={book.title} />
+				{hasCover ? <img src={coverUrl} alt={book.title} /> : <FontAwesomeIcon icon={faBook} size="3x" />}
 				<div className="bottom">
 					<h3 className="title">{book.title}</h3>
-					<h2 className="author">{book.author_name}</h2>
+					<h2 className="author">{authors}</h2>
 				</div>
 			</div>
-			<Modal />
 		</React.Fragment>
 	);
 };
