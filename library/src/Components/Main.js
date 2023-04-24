@@ -75,7 +75,7 @@ const Main = () => {
 					</button>
 				</div>
 			</div>
-			<img src="./bg2.png" className="responsive-image" alt="background" />
+			{/* <img src="./bg2.png" className="responsive-image" alt="background" /> */}
 			<div className="container">
 				{loading && <p>Loading...</p>}
 				{!loading &&
