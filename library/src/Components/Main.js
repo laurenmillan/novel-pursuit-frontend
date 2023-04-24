@@ -15,11 +15,11 @@ const Main = () => {
 			setLoading(true);
 
 			try {
-				const results = await LibraryApi.getBooksByTitle(search); // Pass search variable
+				const results = await LibraryApi.getBooks(search); // Pass search variable
 				// console.log(results);
 				setBookData(results); // Update the state with search results
 			} catch (err) {
-				console.error('Search failed to retrieve book by title');
+				console.error('Search failed to retrieve book information');
 			} finally {
 				setLoading(false); // Set loading to false after fetching data
 			}
@@ -51,7 +51,13 @@ const Main = () => {
 			</div>
 			<img src="./bg2.png" className="responsive-image" alt="background-image" />
 			<div className="container">
-				{loading ? <p>Loading...</p> : bookData.map((book) => <Card key={book.key} book={book} />)}
+				{loading ? (
+					<p>Loading...</p>
+				) : bookData.length > 0 ? (
+					bookData.map((book) => <Card key={book.key} book={book} />)
+				) : (
+					<p>No books found. Please try your search again.</p>
+				)}
 			</div>
 		</React.Fragment>
 	);

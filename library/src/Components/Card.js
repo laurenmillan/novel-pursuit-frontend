@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './Modal';
 
 const Card = ({ book }) => {
 	console.log(book);
@@ -12,6 +13,7 @@ const Card = ({ book }) => {
 					<h2 className="author">{book.author_name}</h2>
 				</div>
 			</div>
+			<Modal />
 		</React.Fragment>
 	);
 };
