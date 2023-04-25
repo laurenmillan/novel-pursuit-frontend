@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 /** Renders book modal.
  * 
@@ -27,7 +28,11 @@ const Modal = ({ show, item, closeModal }) => {
 						<FontAwesomeIcon icon={faTimes} />
 					</button>
 					<div className="inner-box">
-						{coverUrl ? <img src={coverUrl} alt={item.title} /> : <FontAwesomeIcon icon="book" size="6x" />}
+						{coverUrl ? (
+							<img src={coverUrl} alt={item.title} />
+						) : (
+							<FontAwesomeIcon icon={faBook} size="6x" />
+						)}
 						<div className="info">
 							<h1 className="title">{item.title}</h1>
 							<h3 className="author">by {authors}</h3>
