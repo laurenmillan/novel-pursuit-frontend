@@ -75,7 +75,7 @@ const App = () => {
 				<Route exact path="/" element={<><Home /><Main /></>} />
 				<Route exact path="/login" element={<Login login={login} />} />
 				<Route exact path="/signup" element={<Signup />} />
-				<Route exact path="/profile" element={<Profile />} />
+				<Route exact path="/profile" element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />} />
 				<Route exact path="/bookmarks" element={<Bookmarks />} />
 				<Route path="/*" element={<Navigate to="/" />} />
 			</Routes>
