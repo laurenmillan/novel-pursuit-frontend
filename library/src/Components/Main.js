@@ -34,7 +34,7 @@ const Main = () => {
 				const results = await LibraryApi.getBooks(search); // Pass search variable
 				// console.log(results);
 				setBookData(results); // Update the state with search results
-			} catch (err) {
+			} catch (error) {
 				console.error('Search failed to retrieve book information');
 			} finally {
 				setLoading(false); // Set loading to false after fetching data

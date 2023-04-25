@@ -93,7 +93,7 @@ class LibraryApi {
 			id: bookDetails.id,
 			title: bookDetails.title,
 			author_name: bookDetails.author_name,
-			cover_url: bookDetails.cover_url
+			cover_i: bookDetails.cover_i
 		};
 
 		await this.request(`users/${username}/books/${id}`, processedBookDetails, 'post');
