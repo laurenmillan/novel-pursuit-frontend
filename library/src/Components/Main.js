@@ -72,7 +72,7 @@ const Main = () => {
 					onKeyDown={searchBook}
 				/>
 				<div className="search">
-					<button>
+					<button className="magnifying-button">
 						<FontAwesomeIcon icon={faMagnifyingGlass} />
 					</button>
 				</div>
