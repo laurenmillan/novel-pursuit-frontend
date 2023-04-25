@@ -14,7 +14,7 @@ const Card = ({ book, openModal }) => {
 
 	const hasCover = book.cover_i;
 	const coverUrl = hasCover ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null;
-	const authors = book.author_name ? book.author_name.join(', ') : '';
+	const authors = book.author_name ? book.author_name.slice(0, 1) : ''; // Limit results to the first author
 
 	return (
 		<React.Fragment>

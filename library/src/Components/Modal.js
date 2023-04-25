@@ -15,7 +15,8 @@ const Modal = ({ show, item, closeModal }) => {
 	}
 
 	const coverUrl = item.cover_i ? `https://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg` : null;
-	const publishers = item.publisher ? item.publisher.join(', ') : '';
+	const publishers = item.publisher ? item.publisher.slice(0, 1) : ''; // Limit results to the first publisher
+	const authors = item.author_name ? item.author_name.slice(0, 1) : ''; // Limit results to the first author
 
 	return (
 		<React.Fragment>
@@ -27,10 +28,10 @@ const Modal = ({ show, item, closeModal }) => {
 					<div className="inner-box">
 						{coverUrl ? <img src={coverUrl} alt={item.title} /> : <FontAwesomeIcon icon="book" size="6x" />}
 						<div className="info">
-							<h1>{item.title}</h1>
-							<h3>by {item.author_name}</h3>
+							<h1 className="title">{item.title}</h1>
+							<h3 className="author">by {authors}</h3>
 							<h5>
-								Publisher(s): <br />
+								Publisher: <br />
 								{publishers} <br />
 								<span>{item.first_publish_year}</span>
 							</h5>

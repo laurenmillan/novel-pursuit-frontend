@@ -77,7 +77,7 @@ const Main = () => {
 			</div>
 			{/* <img src="./bg2.png" className="responsive-image" alt="background" /> */}
 			<div className="container">
-				{loading && <p>Loading...</p>}
+				{loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
 				{!loading &&
 					bookData.length > 0 &&
 					bookData.map((book) => <Card key={book.key} book={book} openModal={openModal} />)}
