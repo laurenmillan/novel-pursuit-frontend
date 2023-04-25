@@ -8,10 +8,10 @@ import Modal from './Modal';
 
 /** Renders search functionality and book information modal.
  * 
- * -Allows a user to search by title, author, or ISBN.
- * -The component will display the results as cards.
- * -When a user clicks on a card, a modal with the book information is displayed.
- * -A message will appear if a book cannot be located.
+ * - Allows a user to search by title, author, or ISBN.
+ * - The component will display the results as cards.
+ * - When a user clicks on a card, a modal is displayed with the book information.
+ * - A message will appear if a book cannot be located.
  * 
 */
 
@@ -83,7 +83,9 @@ const Main = () => {
 					bookData.map((book) => <Card key={book.key} book={book} openModal={openModal} />)}
 				{!loading &&
 				searchPerformed &&
-				bookData.length === 0 && <p>No books found. Please try your search again.</p>}
+				bookData.length === 0 && (
+					<p style={{ textAlign: 'center' }}>No books found. Please try your search again.</p>
+				)}
 			</div>
 			<Modal show={showModal} item={selectedBook} closeModal={closeModal} />
 		</React.Fragment>
