@@ -47,6 +47,19 @@ const App = () => {
 		[ token ]
 	); // Add token as a dependency
 
+  async function signup(signupData) {
+		try {
+			const token = await LibraryApi.signup(signupData);
+			localStorage.setItem('token', token);
+			setToken(token);
+			LibraryApi.token = token;
+			return { success: true };
+		} catch (error) {
+			console.error('Failed to signup:', error);
+			return { success: false, error };
+		}
+	}
+
 	async function login(loginData){
 		try{
 			const token = await LibraryApi.login(loginData)
@@ -74,7 +87,7 @@ const App = () => {
 			<Routes>
 				<Route exact path="/" element={<><Home /><Main user={currentUser} /></>} />
 				<Route exact path="/login" element={<Login login={login} />} />
-				<Route exact path="/signup" element={<Signup />} />
+				<Route exact path="/signup" element={<Signup signup={signup} />} />
 				<Route exact path="/profile" element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />} />
 				<Route exact path="/bookmarks" element={<Bookmarks />} />
 				<Route path="/*" element={<Navigate to="/" />} />
