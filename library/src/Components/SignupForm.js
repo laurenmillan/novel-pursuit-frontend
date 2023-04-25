@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 /** Renders a Signup Form. 
  * 
- * -When the user successfully signs up, navigate to /companies page.
+ * - When the user successfully signs up, navigate to root.
  * 
 */
 

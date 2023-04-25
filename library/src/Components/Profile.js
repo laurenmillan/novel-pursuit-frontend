@@ -5,8 +5,8 @@ import LibraryApi from '../api/api';
 
 /** Renders a Profile page.
  * 
- * -Renders a form that will allow user to update First Name, Last Name, Email.
- * -Props: 
+ * - Renders a form that will allow user to update First Name, Last Name, Email.
+ * - Props: 
  *    - user: the current user object, containing username and token.
  *    - setCurrentUser: a function to update the current user information in App state.
  * 
