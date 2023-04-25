@@ -72,7 +72,7 @@ const App = () => {
 			<NavBar user={token} logout={logout} />
 			{/* <Main /> */}
 			<Routes>
-				<Route exact path="/" element={<><Home /><Main /></>} />
+				<Route exact path="/" element={<><Home /><Main user={currentUser} /></>} />
 				<Route exact path="/login" element={<Login login={login} />} />
 				<Route exact path="/signup" element={<Signup />} />
 				<Route exact path="/profile" element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />} />

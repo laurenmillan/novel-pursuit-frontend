@@ -3,15 +3,13 @@ import { Form, Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 /** Renders a Login Form. */
+//TODO: if user uses incorrect login credentials, alert user
 
 const LoginForm = ({ login }) => {
 	console.debug('LoginForm');
 
 	const [ isSuccess, setIsSuccess ] = useState(false);
 	const [ validated, setValidated ] = useState(false);
-	const [ errorMessage, setErrorMessage ] = useState('');
-	// TODO: fix error msg
-
 	const navigate = useNavigate();
 	const [ formData, setFormData ] = useState({ username: '', password: '' });
 
@@ -48,9 +46,9 @@ const LoginForm = ({ login }) => {
 		} catch (error) {
 			console.error('Failed to login:', error);
 			if (error.response && (error.response.status === 409 || error.response.status === 401)) {
-				setErrorMessage('Incorrect username or password');
+				alert('Incorrect username or password');
 			} else {
-				setErrorMessage('An error occurred while logging in');
+				alert('An error occurred while logging in');
 			}
 		}
 	};
@@ -63,7 +61,6 @@ const LoginForm = ({ login }) => {
 						<Card>
 							<Card.Body>
 								<h2 className="mb-3">Log In</h2>
-								{errorMessage && <p className="text-danger">{errorMessage}</p>}
 								<Form noValidate validated={validated} onSubmit={handleSubmit}>
 									<Form.Group className="mb-3">
 										<Form.Label htmlFor="username">Username</Form.Label>
