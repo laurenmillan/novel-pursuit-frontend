@@ -4,8 +4,9 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 /** Renders book modal.
  * 
- * -Displays book information for specific book selected by user.
- * -A user can click the X to exit the modal or click outside the modal to exit.
+ * - Displays book information for specific book selected by user.
+ * - User can exit the modal by either clicking the X button or click outside the modal.
+ * - Component limits the displayed authors and publishers to the first element.
  * 
  */
 

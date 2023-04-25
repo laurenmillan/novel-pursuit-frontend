@@ -4,8 +4,9 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 /** Renders book card.
  * 
- * -Displays information about the book.
- * -Displays a book icon if a book cover cannot be located.
+ * - Displays information about the book.
+ * - Displays a book icon if a book cover cannot be located.
+ * - Component limits the displayed authors to the first element.
  * 
  */
 
