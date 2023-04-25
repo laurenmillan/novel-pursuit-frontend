@@ -16,6 +16,8 @@ import Modal from './Modal';
 */
 
 const Main = () => {
+	console.debug('Main');
+
 	const [ search, setSearch ] = useState('');
 	const [ bookData, setBookData ] = useState([]); // store results
 	const [ loading, setLoading ] = useState(false);
@@ -76,7 +78,7 @@ const Main = () => {
 				</div>
 			</div>
 			{/* <img src="./bg2.png" className="responsive-image" alt="background" /> */}
-			<div className="container">
+			<div className="main-container">
 				{loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
 				{!loading &&
 					bookData.length > 0 &&
