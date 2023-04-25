@@ -71,7 +71,7 @@ const Profile = ({ user, setCurrentUser }) => {
 	return (
 		<div className="Profile">
     <Container>
-	  <Row className="justify-content-center">
+      <Row className="justify-content-center">
         <Col xs={12} sm={10} md={8} lg={6}>
           <Card>
             <Card.Body>
