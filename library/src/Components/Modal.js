@@ -30,10 +30,13 @@ const Modal = ({ show, item, closeModal }) => {
 						<div className="info">
 							<h1 className="title">{item.title}</h1>
 							<h3 className="author">by {authors}</h3>
-							<h5>
+							<h5 className="publisher">
 								Publisher: <br />
 								{publishers} <br />
-								<span>{item.first_publish_year}</span>
+								<span className="publish-date">
+									Publish Date: <br />
+									{item.first_publish_year}
+								</span>
 							</h5>
 						</div>
 						<br />
