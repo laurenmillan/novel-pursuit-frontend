@@ -20,7 +20,11 @@ const Card = ({ book, openModal }) => {
 	return (
 		<React.Fragment>
 			<div className="main-card" onClick={() => openModal(book)}>
-				{hasCover ? <img src={coverUrl} alt={book.title} /> : <FontAwesomeIcon icon={faBook} size="3x" />}
+				{hasCover ? (
+					<img src={coverUrl} alt={book.title} />
+				) : (
+					<FontAwesomeIcon icon={faBook} size="10x" style={{ marginBottom: '15' }} />
+				)}
 				<div className="bottom">
 					<h3 className="title">{book.title}</h3>
 					<h2 className="author">{authors}</h2>
