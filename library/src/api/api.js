@@ -96,7 +96,7 @@ class LibraryApi {
 			cover_i: bookDetails.cover_i
 		};
 
-		await this.request(`users/${username}/books/${id}`, processedBookDetails, 'post');
+		await this.request(`users/${username}/books/${encodeURIComponent(id)}`, processedBookDetails, 'post');
 	}
 
 	/** Get token for login from username, password. */

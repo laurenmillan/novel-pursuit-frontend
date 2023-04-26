@@ -13,6 +13,8 @@ import { faBook, faBookmark } from '@fortawesome/free-solid-svg-icons';
  */
 
 const Modal = ({ show, item, closeModal, bookmarks }) => {
+	console.debug('bookmarks=', bookmarks);
+
 	if (!show) {
 		return null;
 	}
@@ -22,7 +24,8 @@ const Modal = ({ show, item, closeModal, bookmarks }) => {
 	const authors = item.author_name ? item.author_name.slice(0, 1) : ''; // Limit results to the first author
 
 	const saveBook = () => {
-		const isbn = item.isbn && item.isbn.length > 0 ? item.isbn[0] : null;
+		const isbn = item.isbn && item.isbn.length > 0 ? item.isbn[0].toString() : null;
+
 		if (isbn) {
 			bookmarks(isbn); // Call the bookmarks function with the book ISBN when the Save Book button is clicked
 			closeModal();
