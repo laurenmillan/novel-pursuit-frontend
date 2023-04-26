@@ -83,7 +83,7 @@ class LibraryApi {
 		return res.data.docs;
 	}
 
-	/** Bookmark a book */
+	/** Save a book */
 
 	static async bookmarks(username, id) {
 		const bookDetails = await this.getBook(id);

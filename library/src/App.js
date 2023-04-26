@@ -17,8 +17,9 @@ import jwt_decode from 'jwt-decode';
  * - signup and logout functions use the LibraryApi to make requests to the backend API. If successful, they update 
  *    the token and store it in the browser's local storage.
  * - This maintains the user's session and avoids the need for the user to login when they revisit the website.
- * -useEffect will run whenever the token value changes to ensure that the user information is fetched and
+ * - useEffect will run whenever the token value changes to ensure that the user information is fetched and
  *    updated based on the changes to the token.
+ * - bookmarks function to handle a user saving "bookmarking" a book.
  * 
 */
 
@@ -82,11 +83,13 @@ const App = () => {
 		localStorage.removeItem('token');
 	}
 
-	async function bookmarks(username, id) {
+	async function bookmarks(id) {
 		if (currentUser) {
 			try {
+				await LibraryApi.bookmarks(currentUser.username, id);
 			} catch (error) {
-				console.error('Failed to bookmark this book', error);
+				console.error('Failed to bookmark this book.', error);
+				alert('You already bookmarked this book.');
 			}
 		} else {
 			console.error('User must be logged in to bookmark a book.');
@@ -97,11 +100,11 @@ const App = () => {
 		<div className="App">
 			<NavBar user={token} logout={logout} />
 			<Routes>
-				<Route exact path="/" element={<Main user={currentUser} />} />
+				<Route exact path="/" element={<Main user={currentUser} bookmarks={bookmarks} />} />
 				<Route exact path="/login" element={<Login login={login} />} />
 				<Route exact path="/signup" element={<Signup signup={signup} />} />
 				<Route exact path="/profile" element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />} />
-				<Route exact path="/bookmarks" element={<Bookmarks bookmarks={bookmarks} />} />
+				<Route exact path="/bookmarks" element={<Bookmarks user={currentUser} bookmarks={bookmarks} />} />
 				<Route path="/*" element={<Navigate to="/" />} />
 			</Routes>
 		</div>

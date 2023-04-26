@@ -15,7 +15,7 @@ import Modal from './Modal';
  * 
 */
 
-const Main = () => {
+const Main = ({ user, bookmarks }) => {
 	console.debug('Main');
 
 	const [ search, setSearch ] = useState('');
@@ -89,7 +89,7 @@ const Main = () => {
 					<p style={{ textAlign: 'center' }}>No books found. Please try your search again.</p>
 				)}
 			</div>
-			<Modal show={showModal} item={selectedBook} closeModal={closeModal} />
+			<Modal show={showModal} item={selectedBook} closeModal={closeModal} bookmarks={bookmarks} />
 		</React.Fragment>
 	);
 };
