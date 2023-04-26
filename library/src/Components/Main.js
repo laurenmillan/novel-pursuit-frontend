@@ -28,7 +28,7 @@ const Main = ({ user, bookmarks }) => {
 	const [ selectedBook, setSelectedBook ] = useState(null);
 
 	const searchBook = async (evt) => {
-		if (evt.key === 'Enter') {
+		if (!evt.key || evt.key === 'Enter') {
 			setLoading(true);
 			setSearchPerformed(true); // Set searchPerformed to true when a search is performed
 
@@ -72,7 +72,7 @@ const Main = ({ user, bookmarks }) => {
 					onKeyDown={searchBook}
 				/>
 				<div className="search">
-					<button className="magnifying-button">
+					<button className="magnifying-button" onClick={searchBook}>
 						<FontAwesomeIcon icon={faMagnifyingGlass} />
 					</button>
 				</div>
