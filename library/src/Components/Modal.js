@@ -8,8 +8,8 @@ const Modal = ({ show, item, closeModal }) => {
 	}
 
 	const coverUrl = item.cover_i ? `https://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg` : null;
-	const publishers = item.publisher ? item.publisher.slice(0, 1) : ''; // Limit results to the first publisher
-	const authors = item.author_name ? item.author_name.slice(0, 1) : ''; // Limit results to the first author
+	const publisher = item.publisher ? item.publisher.slice(0, 1) : ''; // Limit results to the first publisher
+	const author = item.author_name ? item.author_name.slice(0, 1) : ''; // Limit results to the first author
 
 	const handleButtonClick = (evt) => {
 		evt.stopPropagation();
@@ -31,9 +31,9 @@ const Modal = ({ show, item, closeModal }) => {
 						)}
 						<div className="info">
 							<h1 className="title">{item.title}</h1>
-							<h3 className="author">by {authors}</h3>
+							<h3 className="author">by {author}</h3>
 							<h5 className="publisher">
-								Publisher: {publishers}
+								Publisher: {publisher}
 								<span className="publish-date">
 									&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
 								</span>
@@ -41,9 +41,7 @@ const Modal = ({ show, item, closeModal }) => {
 							<button className="bookmark-btn" type="submit" onClick={handleButtonClick}>
 								<span className="bookmark-text">
 									<FontAwesomeIcon className="bookmark-icon" icon={faBookmark} size="1x" />
-									<span className="add-to-bookmarks" style={{ fontSize: '0.8rem' }}>
-										&nbsp;Add to Bookmarks
-									</span>
+									<span className="add-to-bookmarks">&nbsp;Add to Bookmarks</span>
 								</span>
 							</button>
 						</div>

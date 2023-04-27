@@ -180,7 +180,7 @@
 
 .overlay-inner .inner-box h3 {
 	margin-top: 10px;
-	color: green;
+	color: #347d56;
 }
 
 .overlay-inner .inner-box h5 {
@@ -199,7 +199,7 @@
 
 .bookmark-icon {
 	font-size: 1.3rem;
-	transition: color 0.3s;
+	transition: color 0.2s;
 }
 
 .bookmark-icon:hover {
@@ -207,7 +207,8 @@
 }
 
 .add-to-bookmarks {
-	transition: text-decoration 0.3s;
+	font-size: 13px;
+	transition: text-decoration 0.2s;
 }
 
 .bookmark-btn:hover .add-to-bookmarks {
