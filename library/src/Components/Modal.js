@@ -8,8 +8,8 @@ const Modal = ({ show, item, closeModal }) => {
 	}
 
 	const coverUrl = item.cover_i ? `https://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg` : null;
-	const publisher = item.publisher ? item.publisher.slice(0, 1) : ''; // Limit results to the first publisher
-	const author = item.author_name ? item.author_name.slice(0, 1) : ''; // Limit results to the first author
+	const publisher = item.publisher ? item.publisher.slice(0, 1) : '(Information Unavailable)'; // Limit results to the first publisher
+	const author = item.author_name ? item.author_name.slice(0, 1) : '(Information Unavailable)'; // Limit results to the first author
 
 	const handleButtonClick = (evt) => {
 		evt.stopPropagation();
