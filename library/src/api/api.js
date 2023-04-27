@@ -85,18 +85,8 @@ class LibraryApi {
 
 	/** Save a book */
 
-	static async bookmarks(username, id) {
-		const bookDetails = await this.getBook(id);
-
-		// Process book details and extract the required information
-		const processedBookDetails = {
-			id: bookDetails.id,
-			title: bookDetails.title,
-			author_name: bookDetails.author_name,
-			cover_i: bookDetails.cover_i
-		};
-
-		await this.request(`users/${username}/books/${encodeURIComponent(id)}`, processedBookDetails, 'post');
+	static async saveBook(username, id) {
+		await this.request(`users/${username}/books/${id}`, {}, 'post');
 	}
 
 	/** Get token for login from username, password. */
