@@ -9,6 +9,7 @@ import Profile from './Components/Profile';
 import Bookmarks from './Components/Bookmarks';
 import Main from './Components/Main';
 import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
 import './Components/style.css';
 import jwt_decode from 'jwt-decode';
 
@@ -83,31 +84,40 @@ const App = () => {
 		localStorage.removeItem('token');
 	}
 
-	async function bookmarks(id) {
+	async function saveBook(bookId) {
 		if (currentUser) {
 			try {
-				await LibraryApi.bookmarks(currentUser.username, id);
+				await LibraryApi.saveBook(currentUser.username, bookId);
 			} catch (error) {
-				console.error('Failed to bookmark this book.', error);
-				alert('You already bookmarked this book.');
+				console.error('Failed to save this book:', error);
+				alert('You already saved this book.');
 			}
 		} else {
-			console.error('User must be logged in to bookmark a book.');
+			console.error('User must be logged in to save a book.');
 		}
 	}
 
 	return (
-		<div className="App">
-			<NavBar user={token} logout={logout} />
-			<Routes>
-				<Route exact path="/" element={<Main user={currentUser} bookmarks={bookmarks} />} />
-				<Route exact path="/login" element={<Login login={login} />} />
-				<Route exact path="/signup" element={<Signup signup={signup} />} />
-				<Route exact path="/profile" element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />} />
-				<Route exact path="/bookmarks" element={<Bookmarks user={currentUser} bookmarks={bookmarks} />} />
-				<Route path="/*" element={<Navigate to="/" />} />
-			</Routes>
-		</div>
+		<React.Fragment>
+			<div className="App page-container">
+				<NavBar user={token} logout={logout} />
+				<div className="page-content">
+					<Routes>
+						<Route exact path="/" element={<Main user={currentUser} saveBook={saveBook} />} />
+						<Route exact path="/login" element={<Login login={login} />} />
+						<Route exact path="/signup" element={<Signup signup={signup} />} />
+						<Route
+							exact
+							path="/profile"
+							element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />}
+						/>
+						<Route exact path="/bookmarks" element={<Bookmarks user={currentUser} saveBook={saveBook} />} />
+						<Route path="/*" element={<Navigate to="/" />} />
+					</Routes>
+				</div>
+				<Footer />
+			</div>
+		</React.Fragment>
 	);
 };
 
