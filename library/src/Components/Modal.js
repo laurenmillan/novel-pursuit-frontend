@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBook, faBookmark } from '@fortawesome/free-solid-svg-icons';
+import SavedBooksContext from './Context/SavedBookContext';
 
 const Modal = ({ show, item, closeModal }) => {
+	const { saveBook } = useContext(SavedBooksContext);
+
 	if (!show) {
 		return null;
 	}
@@ -11,9 +14,10 @@ const Modal = ({ show, item, closeModal }) => {
 	const publisher = item.publisher ? item.publisher.slice(0, 1) : '(Information Unavailable)'; // Limit results to the first publisher
 	const author = item.author_name ? item.author_name.slice(0, 1) : '(Information Unavailable)'; // Limit results to the first author
 
-	const handleButtonClick = (evt) => {
+	const handleClick = async (evt) => {
 		evt.stopPropagation();
-		console.log('Bookmark button clicked');
+		await saveBook(item.key);
+		closeModal();
 	};
 
 	return (
@@ -38,7 +42,7 @@ const Modal = ({ show, item, closeModal }) => {
 									&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
 								</span>
 							</h5>
-							<button className="bookmark-btn" type="submit" onClick={handleButtonClick}>
+							<button className="bookmark-btn" type="submit" onClick={handleClick}>
 								<span className="bookmark-text">
 									<FontAwesomeIcon className="bookmark-icon" icon={faBookmark} size="1x" />
 									<span className="add-to-bookmarks">&nbsp;Add to Bookmarks</span>
