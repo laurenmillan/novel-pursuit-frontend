@@ -17,7 +17,7 @@ const Modal = ({ show, item, closeModal }) => {
 	const handleClick = async (evt) => {
 		evt.stopPropagation();
 		await saveBook(item.key);
-		closeModal();
+		// closeModal();
 	};
 
 	return (

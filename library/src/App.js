@@ -12,12 +12,12 @@ import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
 import './Components/style.css';
 import jwt_decode from 'jwt-decode';
+import SavedBooksContext from './Components/Context/SavedBookContext';
 
 /** Library App logic. 
  * 
- * - signup and logout functions use the LibraryApi to make requests to the backend API. If successful, they update 
- *    the token and store it in the browser's local storage.
- * - This maintains the user's session and avoids the need for the user to login when they revisit the website.
+ * - useEffect is used to fetch user data whenever the token changes.
+ * - signup, login, and logout functions manage user authentication and the JWT token stored in LS.
  * - useEffect will run whenever the token value changes to ensure that the user information is fetched and
  *    updated based on the changes to the token.
  * - bookmarks function to handle a user saving "bookmarking" a book.
@@ -28,6 +28,7 @@ const App = () => {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ token, setToken ] = useState(localStorage.getItem('token')); // retrieve the value of the token key from LS
 	LibraryApi.token = token;
+	const [ savedBooks, setSavedBooks ] = useState([]);
 
 	console.debug('App', 'currentUser=', currentUser, 'token=', token);
 
@@ -84,10 +85,14 @@ const App = () => {
 		localStorage.removeItem('token');
 	}
 
-	async function saveBook(bookId) {
+	async function saveBook(key) {
 		if (currentUser) {
 			try {
+				// Extract the book ID from the key, because the key format is '/works/OLXXXXXW'
+				const bookId = key.split('/').pop();
+
 				await LibraryApi.saveBook(currentUser.username, bookId);
+				setSavedBooks((prevBooks) => [ ...prevBooks, bookId ]);
 			} catch (error) {
 				console.error('Failed to save this book:', error);
 				alert('You already saved this book.');
@@ -99,24 +104,30 @@ const App = () => {
 
 	return (
 		<React.Fragment>
-			<div className="App page-container">
-				<NavBar user={token} logout={logout} />
-				<div className="page-content">
-					<Routes>
-						<Route exact path="/" element={<Main user={currentUser} saveBook={saveBook} />} />
-						<Route exact path="/login" element={<Login login={login} />} />
-						<Route exact path="/signup" element={<Signup signup={signup} />} />
-						<Route
-							exact
-							path="/profile"
-							element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />}
-						/>
-						<Route exact path="/bookmarks" element={<Bookmarks user={currentUser} saveBook={saveBook} />} />
-						<Route path="/*" element={<Navigate to="/" />} />
-					</Routes>
+			<SavedBooksContext.Provider value={{ savedBooks, saveBook }}>
+				<div className="App page-container">
+					<NavBar user={token} logout={logout} />
+					<div className="page-content">
+						<Routes>
+							<Route exact path="/" element={<Main user={currentUser} saveBook={saveBook} />} />
+							<Route exact path="/login" element={<Login login={login} />} />
+							<Route exact path="/signup" element={<Signup signup={signup} />} />
+							<Route
+								exact
+								path="/profile"
+								element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />}
+							/>
+							<Route
+								exact
+								path="/bookmarks"
+								element={<Bookmarks user={currentUser} saveBook={saveBook} />}
+							/>
+							<Route path="/*" element={<Navigate to="/" />} />
+						</Routes>
+					</div>
+					<Footer />
 				</div>
-				<Footer />
-			</div>
+			</SavedBooksContext.Provider>
 		</React.Fragment>
 	);
 };
