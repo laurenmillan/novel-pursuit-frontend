@@ -6,7 +6,8 @@ import { useAppContext } from './Context/AppContext';
 /** Renders a book modal.
  *  
  * - item is the selectedBook which is a prop passed down from the Main component.
- * - Displays a modal for the selected book with the book details.
+ * - Returns a modal overlay that displays the book details.
+ * - It includes a button to add or remove the book from the bookmarks.
  * 
  */
 
@@ -19,9 +20,10 @@ const Modal = ({ show, item, closeModal }) => {
 		return null;
 	}
 
-	const favoriteBookCheck = (key) => {
-		const bool = favorites.some((book) => book.key === key);
-		return bool;
+	const isBookInFavorites = (key) => {
+		// .some checks if there is at least one element in the favorites array in the condition
+		const found = favorites.some((book) => book.key === key);
+		return found;
 	};
 
 	const coverUrl = item.cover_i ? `https://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg` : null;
@@ -51,7 +53,7 @@ const Modal = ({ show, item, closeModal }) => {
 								</span>
 							</h5>
 
-							{favoriteBookCheck(item.key) ? (
+							{isBookInFavorites(item.key) ? (
 								<button
 									className="bookmark-btn"
 									type="submit"
@@ -70,7 +72,7 @@ const Modal = ({ show, item, closeModal }) => {
 									className="bookmark-btn"
 									type="submit"
 									onClick={(e) => {
-										e.stopPropagation(); // Add this line
+										e.stopPropagation();
 										addToFavorites(item);
 									}}
 								>
