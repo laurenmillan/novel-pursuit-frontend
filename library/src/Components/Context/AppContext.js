@@ -1,6 +1,13 @@
 import { createContext, useContext } from 'react';
 import { useState } from 'react';
 
+/** Manages state for a list of favorited books.
+ * 
+ * - Defines the addToFavorites function, which takes a book object as a parameter and adds it to the favorites array.
+ * - Defines the removeFromFavorites function, which takes a key parameter and removes the book with the matching key from the favorites array.
+ * 
+ */
+
 // initially set to null
 const AppContext = createContext(null);
 
