@@ -7,6 +7,7 @@ import './style.css';
 /** Renders a Bookmarks page.
  *
  * - Displays saved books "bookmarks" for logged in user.
+ * - A user can also remove a saved book from "bookmarks".
  *
  */
 
