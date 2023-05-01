@@ -36,8 +36,10 @@ const Bookmarks = () => {
 								)}
 								<div className="info">
 									<h1 className="title">{item.title}</h1>
-									<h3 className="author">by {author}</h3>
-									<h5 className="publisher">
+									<h3 className="author" style={{ color: '#347d56' }}>
+										by {author}
+									</h3>
+									<h5 className="publisher" style={{ color: 'blue' }}>
 										Publisher: {publisher}
 										<span className="publish-date">
 											&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
