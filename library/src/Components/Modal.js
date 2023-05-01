@@ -19,6 +19,11 @@ const Modal = ({ show, item, closeModal }) => {
 		return null;
 	}
 
+	const favoriteBookCheck = (key) => {
+		const bool = favorites.some((book) => book.key === key);
+		return bool;
+	};
+
 	const coverUrl = item.cover_i ? `https://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg` : null;
 	const publisher = item.publisher ? item.publisher.slice(0, 1) : '(Information Unavailable)'; // Limit results to the first publisher
 	const author = item.author_name ? item.author_name.slice(0, 1) : '(Information Unavailable)'; // Limit results to the first author
@@ -45,12 +50,36 @@ const Modal = ({ show, item, closeModal }) => {
 									&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
 								</span>
 							</h5>
-							<button className="bookmark-btn" type="submit" onClick={() => addToFavorites(item)}>
-								<span className="bookmark-text">
-									<FontAwesomeIcon className="bookmark-icon" icon={faBookmark} size="1x" />
-									<span className="add-to-bookmarks">&nbsp;Add to Bookmarks</span>
-								</span>
-							</button>
+
+							{favoriteBookCheck(item.key) ? (
+								<button
+									className="bookmark-btn"
+									type="submit"
+									onClick={(e) => {
+										e.stopPropagation();
+										removeFromFavorites(item.key);
+									}}
+								>
+									<span className="bookmark-text">
+										<FontAwesomeIcon className="bookmark-icon" icon={faBookmark} size="1x" />
+										<span className="add-to-bookmarks">&nbsp;Remove from Bookmarks</span>
+									</span>
+								</button>
+							) : (
+								<button
+									className="bookmark-btn"
+									type="submit"
+									onClick={(e) => {
+										e.stopPropagation(); // Add this line
+										addToFavorites(item);
+									}}
+								>
+									<span className="bookmark-text">
+										<FontAwesomeIcon className="bookmark-icon" icon={faBookmark} size="1x" />
+										<span className="add-to-bookmarks">&nbsp;Add to Bookmarks</span>
+									</span>
+								</button>
+							)}
 						</div>
 						<br />
 					</div>
