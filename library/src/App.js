@@ -95,7 +95,6 @@ const App = () => {
 				setSavedBooks((prevBooks) => [ ...prevBooks, bookId ]);
 			} catch (error) {
 				console.error('Failed to save this book:', error);
-				alert('You already saved this book.');
 			}
 		} else {
 			console.error('User must be logged in to save a book.');
