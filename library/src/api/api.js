@@ -85,8 +85,8 @@ class LibraryApi {
 
 	/** Save a book */
 
-	static async saveBook(username, id) {
-		await this.request(`users/${username}/books/${id}`, {}, 'post');
+	static async saveBook(username, bookId) {
+		await this.request(`users/${username}/books/${bookId}`, {}, 'post');
 	}
 
 	/** Get token for login from username, password. */
