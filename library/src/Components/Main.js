@@ -12,6 +12,8 @@ import Modal from './Modal';
  * - The component will display the results as cards.
  * - When a user clicks on a card, a modal is displayed with the book information.
  * - A message will appear if a book cannot be located.
+ * - selectedBook state is set using the setSelectedBook function whenever a card is clicked. 
+ * - The selected book is passed to the Modal component as the item prop, which is used to display the book details.
  * 
 */
 
