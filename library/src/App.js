@@ -28,7 +28,6 @@ const App = () => {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ token, setToken ] = useState(localStorage.getItem('token')); // retrieve the value of the token key from LS
 	LibraryApi.token = token;
-	// const [ savedBooks, setSavedBooks ] = useState([]);
 
 	console.debug('App', 'currentUser=', currentUser, 'token=', token);
 
@@ -84,22 +83,6 @@ const App = () => {
 		setToken(null);
 		localStorage.removeItem('token');
 	}
-
-	// async function saveBook(key) {
-	// 	if (currentUser) {
-	// 		try {
-	// 			// Extract the book ID from the key, because the key format is '/works/OLXXXXXW'
-	// 			const bookId = key.split('/').pop();
-
-	// 			await LibraryApi.saveBook(currentUser.username, bookId);
-	// 			setSavedBooks((prevBooks) => [ ...prevBooks, bookId ]);
-	// 		} catch (error) {
-	// 			console.error('Failed to save this book:', error);
-	// 		}
-	// 	} else {
-	// 		console.error('User must be logged in to save a book.');
-	// 	}
-	// }
 
 	return (
 		<React.Fragment>
