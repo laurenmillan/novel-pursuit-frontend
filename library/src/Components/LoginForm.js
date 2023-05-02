@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-/** Renders a Login Form. */
+/** Renders a Login Form. 
+ * 
+ * - The UI will display an error message if a user's login credentials are incorrect.
+ * 
+*/
 
 const LoginForm = ({ login }) => {
 	console.debug('LoginForm');
@@ -11,6 +15,7 @@ const LoginForm = ({ login }) => {
 	const [ validated, setValidated ] = useState(false);
 	const navigate = useNavigate();
 	const [ formData, setFormData ] = useState({ username: '', password: '' });
+	const [ error, setError ] = useState(null);
 
 	useEffect(
 		() => {
@@ -39,16 +44,14 @@ const LoginForm = ({ login }) => {
 			return;
 		}
 
-		try {
-			const loginRes = await login(formData);
-			setIsSuccess(loginRes.success);
-		} catch (error) {
-			console.error('Failed to login:', error);
-			if (error.response && (error.response.status === 409 || error.response.status === 401)) {
-				alert('Incorrect username or password');
-			} else {
-				alert('An error occurred while logging in');
-			}
+		const loginRes = await login(formData);
+		setIsSuccess(loginRes.success);
+
+		if (!loginRes.success) {
+			console.error('Failed to login:', loginRes.error);
+			setError('Incorrect username or password');
+		} else {
+			setError(null);
 		}
 	};
 
@@ -60,6 +63,7 @@ const LoginForm = ({ login }) => {
 						<Card>
 							<Card.Body>
 								<h2 className="mb-3">Log In</h2>
+								{error ? <div className="alert alert-danger">{error}</div> : null}
 								<Form noValidate validated={validated} onSubmit={handleSubmit}>
 									<Form.Group className="mb-3">
 										<Form.Label htmlFor="username">Username</Form.Label>
