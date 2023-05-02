@@ -30,34 +30,36 @@ const Bookmarks = () => {
 
 						return (
 							<div key={item.key} className="book-item">
-								{coverUrl ? (
-									<img className="book-cover" src={coverUrl} alt={item.title} />
-								) : (
-									<FontAwesomeIcon className="book-placeholder" icon={faBook} size="6x" />
-								)}
-								<div className="info">
-									<h1 className="title">{item.title}</h1>
-									<h3 className="author" style={{ color: '#347d56' }}>
-										by {author}
-									</h3>
-									<h5 className="publisher" style={{ color: 'blue' }}>
-										Publisher: {publisher}
-										<span className="publish-date">
-											&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
-										</span>
-									</h5>
+								<div className="book-item-content">
+									{coverUrl ? (
+										<img className="book-cover" src={coverUrl} alt={item.title} />
+									) : (
+										<FontAwesomeIcon className="book-placeholder" icon={faBook} size="6x" />
+									)}
+									<div className="info">
+										<h1 className="title">{item.title}</h1>
+										<h3 className="author" style={{ color: '#347d56' }}>
+											by {author}
+										</h3>
+										<h5 className="publisher" style={{ color: 'blue' }}>
+											Publisher: {publisher}
+											<span className="publish-date">
+												&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
+											</span>
+										</h5>
+									</div>
+									<button
+										className="bookmark-btn"
+										type="submit"
+										onClick={(e) => {
+											e.stopPropagation();
+											removeFromFavorites(item.key);
+										}}
+									>
+										<FontAwesomeIcon className="bookmark-icon" icon={faBookmark} size="1x" />
+										<span className="add-to-bookmarks">&nbsp;Remove from Bookmarks</span>
+									</button>
 								</div>
-								<button
-									className="bookmark-btn"
-									type="submit"
-									onClick={(e) => {
-										e.stopPropagation();
-										removeFromFavorites(item.key);
-									}}
-								>
-									<FontAwesomeIcon className="bookmark-icon" icon={faBookmark} size="1x" />
-									<span className="add-to-bookmarks">&nbsp;Remove from Bookmarks</span>
-								</button>
 							</div>
 						);
 					})
