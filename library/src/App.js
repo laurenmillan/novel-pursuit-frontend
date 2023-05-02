@@ -73,6 +73,7 @@ const App = () => {
 			return { success: true };
 		} catch (error) {
 			console.error('Failed to login:', error);
+			alert('Invalid username or password. Please try again.');
 			return { success: false, error };
 		}
 	}
