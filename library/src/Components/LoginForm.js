@@ -3,7 +3,6 @@ import { Form, Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 /** Renders a Login Form. */
-//TODO: if user uses incorrect login credentials, alert user
 
 const LoginForm = ({ login }) => {
 	console.debug('LoginForm');
