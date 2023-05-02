@@ -40,19 +40,19 @@ const NavBar = ({ user, logout }) => {
 							// if a user is logged in, show /profile, /bookmarks
 							<React.Fragment>
 								<Nav.Item>
-									<Nav.Link as={NavLink} activeclassname="active" to="/bookmarks">
+									<Nav.Link as={NavLink} activeClassName="active" to="/bookmarks">
 										Bookmarks
 									</Nav.Link>
 								</Nav.Item>
 
 								<Nav.Item>
-									<Nav.Link as={NavLink} activeclassname="active" to="/profile">
+									<Nav.Link as={NavLink} activeClassName="active" to="/profile">
 										Profile
 									</Nav.Link>
 								</Nav.Item>
 
 								<Nav.Item>
-									<Nav.Link as={NavLink} activeclassname="active" to="/" onClick={logout}>
+									<Nav.Link as={NavLink} activeClassName="active" to="/" onClick={logout}>
 										Log out
 									</Nav.Link>
 								</Nav.Item>
