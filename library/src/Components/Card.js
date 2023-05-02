@@ -23,7 +23,7 @@ const Card = ({ book, openModal }) => {
 				{hasCover ? (
 					<img src={coverUrl} alt={book.title} />
 				) : (
-					<FontAwesomeIcon icon={faBook} size="10x" style={{ marginBottom: '15' }} />
+					<FontAwesomeIcon icon={faBook} size="10x" style={{ marginBottom: '15px' }} />
 				)}
 				<div className="bottom">
 					<h3 className="title">{book.title}</h3>
