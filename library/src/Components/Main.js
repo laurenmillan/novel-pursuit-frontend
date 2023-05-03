@@ -58,12 +58,9 @@ const Main = () => {
 
 	return (
 		<React.Fragment>
-			<div>
-				<h1>
-					“A reader lives a thousand lives before he dies... <br /> The man who never reads lives only one.”
-				</h1>
-				<h3>-George R.R. Martin</h3>
-				<hr />
+			<div className="main-text">
+				<h1>Discover Your Next Great Read</h1>
+				<p>Explore a vast collection of books</p>
 			</div>
 			<div className="search">
 				<input
@@ -79,9 +76,8 @@ const Main = () => {
 					</button>
 				</div>
 			</div>
-			{/* <img src="./bg2.png" className="responsive-image" alt="background" /> */}
+			<div className="loading-container">{loading && <p>Loading...</p>}</div>
 			<div className="main-container">
-				{loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
 				{!loading &&
 					bookData.length > 0 &&
 					bookData.map((book) => <Card key={book.key} book={book} openModal={openModal} />)}
