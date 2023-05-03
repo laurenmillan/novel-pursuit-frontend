@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBook, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { useAppContext } from './Context/AppContext';
@@ -6,19 +6,52 @@ import { useAppContext } from './Context/AppContext';
 /** Renders a book modal.
  *  
  * - item is the selectedBook which is a prop passed down from the Main component.
- * - Returns a modal overlay that displays the book details.
+ * - Returns a modal overlay that displays the book details, handles for unavailable descriptions.
  * - It includes a button to add or remove the book from the bookmarks.
  * 
  */
 
 const Modal = ({ show, item, closeModal }) => {
 	const { favorites, addToFavorites, removeFromFavorites } = useAppContext();
+	const [ description, setDescription ] = useState('');
+	const [ loading, setLoading ] = useState(true); // loading state variable for the book description
 
-	console.log('favorites are', favorites);
+	// useEffect makes a separate API request to get the description of the book and handle different formats of the description object
+	useEffect(
+		() => {
+			// Reset loading and description states when the item changes
+			setLoading(true);
+			setDescription('');
+
+			if (item) {
+				const fetchDescription = async () => {
+					try {
+						const response = await fetch(`https://openlibrary.org${item.key}.json`);
+						const data = await response.json();
+						if (data && data.description) {
+							if (typeof data.description === 'string') {
+								setDescription(data.description);
+							} else if (data.description.value) {
+								setDescription(data.description.value);
+							}
+						}
+						setLoading(false);
+					} catch (error) {
+						console.error(error);
+						setLoading(false);
+					}
+				};
+				fetchDescription();
+			}
+		},
+		[ item ]
+	);
 
 	if (!show) {
 		return null;
 	}
+
+	console.log('favorites are', favorites);
 
 	const isBookInFavorites = (key) => {
 		// .some checks if there is at least one element in the favorites array in the condition
@@ -52,6 +85,12 @@ const Modal = ({ show, item, closeModal }) => {
 									&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
 								</span>
 							</h5>
+
+							{loading ? (
+								<p className="loading-text">Loading...</p>
+							) : (
+								<p className="description-text">{description || 'Sorry, no description available.'}</p>
+							)}
 
 							{isBookInFavorites(item.key) ? (
 								<button
