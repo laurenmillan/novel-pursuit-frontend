@@ -311,3 +311,9 @@
 	align-items: center;
 	margin-top: 20px;
 }
+
+.centered-button-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+}

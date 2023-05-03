@@ -41,9 +41,9 @@ class LibraryApi {
 
 	/** Get details of a book by isbn, author or title. */
 
-	static async getBooks(query) {
-		const titleResults = await this.getBooksByTitle(query);
-		const authorResults = await this.getBooksByAuthor(query);
+	static async getBooks(query, page) {
+		const titleResults = await this.getBooksByTitle(query, page);
+		const authorResults = await this.getBooksByAuthor(query, page);
 
 		try {
 			const isbnResults = await this.getBook(query);
@@ -63,10 +63,12 @@ class LibraryApi {
 
 	/** Get list of books (filtered by title if not undefined). */
 
-	static async getBooksByTitle(title) {
+	static async getBooksByTitle(title, page) {
 		const res = await axios.get(LIBRARY_SEARCH_URL, {
 			params: {
-				title: title
+				title: title,
+				page: page,
+				limit: 16
 			}
 		});
 		return res.data.docs;
@@ -74,10 +76,12 @@ class LibraryApi {
 
 	/** Get list of books (filtered by author if not undefined). */
 
-	static async getBooksByAuthor(author) {
+	static async getBooksByAuthor(author, page) {
 		const res = await axios.get(LIBRARY_SEARCH_URL, {
 			params: {
-				author_name: author
+				author_name: author,
+				page: page,
+				limit: 16
 			}
 		});
 		return res.data.docs;
