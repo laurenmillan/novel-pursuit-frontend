@@ -26,7 +26,7 @@ const Card = ({ book, openModal }) => {
 					<FontAwesomeIcon icon={faBook} size="10x" style={{ marginBottom: '15px' }} />
 				)}
 				<div className="bottom">
-					<h3 className="title">{book.title}</h3>
+					<h3 className="title card-title">{book.title}</h3>
 					<h2 className="author">{authors}</h2>
 				</div>
 			</div>

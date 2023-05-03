@@ -77,7 +77,7 @@ const Modal = ({ show, item, closeModal }) => {
 							<FontAwesomeIcon className="book-placeholder" icon={faBook} size="6x" />
 						)}
 						<div className="info">
-							<h1 className="title">{item.title}</h1>
+							<h1 className="modal-title">{item.title}</h1>
 							<h3 className="author">by {author}</h3>
 							<h5 className="publisher">
 								Publisher: {publisher}
