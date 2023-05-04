@@ -44,7 +44,7 @@ const Bookmarks = () => {
 										<h3 className="author" style={{ color: '#347d56' }}>
 											by {author}
 										</h3>
-										<h5 className="publisher" style={{ color: 'blue' }}>
+										<h5 className="publisher">
 											Publisher: {publisher}
 											<span className="publish-date">
 												&nbsp;|&nbsp;Publish Date: {item.first_publish_year}
