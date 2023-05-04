@@ -8,6 +8,7 @@ import './style.css';
  *
  * - Displays saved books "bookmarks" for logged in user.
  * - A user can also remove a saved book from "bookmarks".
+ * - favorites and removeFromFavorites are passed from AppContext.
  *
  */
 

@@ -5,6 +5,9 @@ import { useState } from 'react';
  * 
  * - Defines the addToFavorites function, which takes a book object as a parameter and adds it to the favorites array.
  * - Defines the removeFromFavorites function, which takes a key parameter and removes the book with the matching key from the favorites array.
+ * - useState manages addToFavorites and removeFromFavorites.
+ * - AppContextProvider component wraps its children with the AppContext.Provider component and passes the favorites and removeFromFavorites 
+ * 		properties as the value prop of the AppContext.Provider component.
  * 
  */
 
@@ -26,10 +29,10 @@ const AppContextProvider = ({ children }) => {
 
 	// pass book object as a parameter
 	const addToFavorites = (book) => {
-		const currFavorites = [ ...favorites ];
+		const currFavorites = [ ...favorites ]; // creates a new array that includes currFavorites concatenated with the book obkect
 		const newFavorites = currFavorites.concat(book);
 
-		setFavorites(newFavorites);
+		setFavorites(newFavorites); // updates favorites state with new array
 	};
 
 	const removeFromFavorites = (key) => {
