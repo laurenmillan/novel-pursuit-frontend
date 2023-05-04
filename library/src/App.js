@@ -89,7 +89,7 @@ const App = () => {
 
 	return (
 		<React.Fragment>
-			<AppContextProvider>
+			<AppContextProvider isLoggedIn={isLoggedIn}>
 				<div className="App page-container">
 					<NavBar user={token} logout={logout} />
 					<div className="page-content">

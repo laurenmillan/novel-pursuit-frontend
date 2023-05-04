@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { useState } from 'react';
 
 /** Manages state for a list of favorited books.
@@ -24,8 +24,18 @@ export const useAppContext = () => {
 	return context;
 };
 
-const AppContextProvider = ({ children }) => {
+const AppContextProvider = ({ children, isLoggedIn }) => {
 	const [ favorites, setFavorites ] = useState([]);
+
+	// Clear favorites state when the user logs out
+	useEffect(
+		() => {
+			if (!isLoggedIn) {
+				setFavorites([]);
+			}
+		},
+		[ isLoggedIn ]
+	);
 
 	// pass book object as a parameter
 	const addToFavorites = (book) => {
