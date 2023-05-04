@@ -223,6 +223,7 @@
 
 .bookmark-btn:hover .add-to-bookmarks {
 	text-decoration: underline;
+	color: #347d56;
 }
 
 .bookmark-text {
@@ -234,6 +235,7 @@
 }
 
 .bookmarks h1 {
+	font-size: 23px;
 	text-align: center;
 	margin-bottom: 20px;
 }
