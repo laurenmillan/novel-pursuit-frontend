@@ -18,7 +18,9 @@ const Bookmarks = () => {
 
 	return (
 		<div className="bookmarks">
-			<h1>Bookmarks</h1>
+			<h1 className="h1-title" style={{ fontSize: '3rem' }}>
+				Bookmarks
+			</h1>
 			<div className="bookmarks-grid">
 				{favorites.length > 0 ? (
 					favorites.map((item) => {
