@@ -8,10 +8,12 @@ import { useAppContext } from './Context/AppContext';
  * - item is the selectedBook which is a prop passed down from the Main component.
  * - Returns a modal overlay that displays the book details, handles for unavailable descriptions.
  * - It includes a button to add or remove the book from the bookmarks.
+ * - When the Modal is rendered within the Main component, the isLoggedIn prop is passed down
+ * 		to decide whether to display the alert for signing up or logging for a user that is logged out.
  * 
  */
 
-const Modal = ({ show, item, closeModal }) => {
+const Modal = ({ show, item, closeModal, isLoggedIn }) => {
 	const { favorites, addToFavorites, removeFromFavorites } = useAppContext();
 	const [ description, setDescription ] = useState('');
 	const [ loading, setLoading ] = useState(true); // loading state variable for the book description
@@ -112,7 +114,12 @@ const Modal = ({ show, item, closeModal }) => {
 									type="submit"
 									onClick={(e) => {
 										e.stopPropagation();
-										addToFavorites(item);
+										if (isLoggedIn) {
+											addToFavorites(item);
+										} else {
+											// Show signup/login prompt
+											alert('You need to Signup or Login to add a Bookmark.');
+										}
 									}}
 								>
 									<span className="bookmark-text">

@@ -15,11 +15,12 @@ import Button from 'react-bootstrap/Button';
  * - A message will appear if a book cannot be located.
  * - selectedBook state is set using the setSelectedBook function whenever a card is clicked. 
  * - The selected book is passed to the Modal component as the item prop, which is used to display the book details.
- * - Component contains pagination with a "Load More" button 
+ * - Component contains pagination with a "Load More" button.
+ * - isLoggedIn is passed down from App to the Modal component.
  * 
 */
 
-const Main = () => {
+const Main = ({ isLoggedIn }) => {
 	const [ search, setSearch ] = useState('');
 	const [ bookData, setBookData ] = useState([]);
 	const [ loading, setLoading ] = useState(false);
@@ -56,6 +57,7 @@ const Main = () => {
 		}
 	};
 
+	// loadMore loads next page of results
 	const loadMore = () => {
 		setPage((prevPage) => prevPage + 1);
 		searchBook(null, page + 1);
@@ -114,7 +116,7 @@ const Main = () => {
 				)}
 				{renderLoadMoreButton()}
 			</div>
-			<Modal show={showModal} item={selectedBook} closeModal={closeModal} />
+			<Modal show={showModal} item={selectedBook} closeModal={closeModal} isLoggedIn={isLoggedIn} />
 		</React.Fragment>
 	);
 };

@@ -21,18 +21,21 @@ import AppContextProvider from './Components/Context/AppContext';
  * - useEffect will run whenever the token value changes to ensure that the user information is fetched and
  *    updated based on the changes to the token.
  * - bookmarks function to handle a user saving "bookmarking" a book.
+ * - When a user logs in, the token and isLoggedIn gets updated based off the presence of a token and is set to true.
  * 
 */
 
 const App = () => {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ token, setToken ] = useState(localStorage.getItem('token')); // retrieve the value of the token key from LS
+	const [ isLoggedIn, setIsLoggedIn ] = useState(false); // isLoggedIn gets updated based on the presence of a token
 	LibraryApi.token = token;
 
 	console.debug('App', 'currentUser=', currentUser, 'token=', token);
 
 	useEffect(
 		() => {
+			setIsLoggedIn(!!token);
 			async function fetchUser() {
 				if (LibraryApi.token) {
 					try {
@@ -91,7 +94,7 @@ const App = () => {
 					<NavBar user={token} logout={logout} />
 					<div className="page-content">
 						<Routes>
-							<Route exact path="/" element={<Main user={currentUser} />} />
+							<Route exact path="/" element={<Main user={currentUser} isLoggedIn={isLoggedIn} />} />
 							<Route exact path="/login" element={<Login login={login} />} />
 							<Route exact path="/signup" element={<Signup signup={signup} />} />
 							<Route
@@ -99,7 +102,7 @@ const App = () => {
 								path="/profile"
 								element={<Profile user={currentUser} setCurrentUser={setCurrentUser} />}
 							/>
-							<Route exact path="/bookmarks" element={<Bookmarks user={currentUser} />} />
+							<Route exact path="/bookmarks" element={<Bookmarks />} />
 							<Route path="/*" element={<Navigate to="/" />} />
 						</Routes>
 					</div>
