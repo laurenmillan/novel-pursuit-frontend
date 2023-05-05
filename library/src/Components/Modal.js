@@ -53,7 +53,7 @@ const Modal = ({ show, item, closeModal, isLoggedIn }) => {
 		return null;
 	}
 
-	console.log('favorites are', favorites);
+	// console.log('favorites are', favorites);
 
 	const isBookInFavorites = (key) => {
 		// .some checks if there is at least one element in the favorites array in the condition
