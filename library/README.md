@@ -2,7 +2,15 @@
 
 Frontend for Novel Pursuit app.
 
-JavaScript / React / React-Bootstrap
+## Tools and Libraries
+
+- [React](https://reactjs.org/): A JavaScript library for building user interfaces.
+- [React-Bootstrap](https://react-bootstrap.github.io/): A library for using Bootstrap with React.
+- [React Router](https://reactrouter.com/): A collection of navigational components for building single-page applications with React.
+- [Axios](https://axios-http.com/): A promise-based HTTP client for the browser and Node.js.
+- [JWT-Decode](https://github.com/auth0/jwt-decode): A library for decoding JSON Web Tokens.
+- [React Icons](https://react-icons.github.io/react-icons/): A collection of popular icon sets for React applications.
+- [Font Awesome](https://fontawesome.com/): A popular icon library and toolkit.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
