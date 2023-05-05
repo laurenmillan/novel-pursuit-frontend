@@ -15,7 +15,7 @@ import './style.css';
 const Bookmarks = () => {
 	const { favorites, removeFromFavorites } = useAppContext();
 
-	console.log('favorites are', favorites);
+	console.debug('Bookmarks', 'favorites=', favorites);
 
 	return (
 		<div className="bookmarks">
