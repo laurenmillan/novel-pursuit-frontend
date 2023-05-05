@@ -3,15 +3,20 @@ import { useState } from 'react';
 
 /** Manages state for a list of favorited books.
  * 
+ * - useAppContext is a custom hook that retrieves the AppContext to access the favorites state and related functions from any component that needs it.
  * - Defines the addToFavorites function, which takes a book object as a parameter and adds it to the favorites array.
  * - Defines the removeFromFavorites function, which takes a key parameter and removes the book with the matching key from the favorites array.
  * - useState manages addToFavorites and removeFromFavorites.
  * - AppContextProvider component wraps its children with the AppContext.Provider component and passes the favorites and removeFromFavorites 
  * 		properties as the value prop of the AppContext.Provider component.
+ * - Retrieves stored favorites from LS and parses the JSON string to an array.
+ * 		-Using the retrieved favorites array as the initial state for the 'favorites' state.
+ * 		-useEffect updates LS whenever the 'favorites' state changes.
+ * - username is passed as a prop from the App component. 
+ * 		AppContextProvider uses username prop to manage the logged-in user's saved books by storing and retrieving them from LS.
  * 
  */
 
-// initially set to null
 const AppContext = createContext(null);
 
 export const useAppContext = () => {
@@ -24,17 +29,30 @@ export const useAppContext = () => {
 	return context;
 };
 
-const AppContextProvider = ({ children, isLoggedIn }) => {
-	const [ favorites, setFavorites ] = useState([]);
+const AppContextProvider = ({ children, username }) => {
+	const storedFavorites = localStorage.getItem(`favorites-${username}`);
+	const initialFavorites = storedFavorites ? JSON.parse(storedFavorites) : [];
 
-	// Clear favorites state when the user logs out
+	const [ favorites, setFavorites ] = useState(initialFavorites);
+
 	useEffect(
 		() => {
-			if (!isLoggedIn) {
+			if (username) {
+				const storedFavorites = localStorage.getItem(`favorites-${username}`);
+				const initialFavorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+				setFavorites(initialFavorites);
+			} else {
 				setFavorites([]);
 			}
 		},
-		[ isLoggedIn ]
+		[ username ]
+	);
+
+	useEffect(
+		() => {
+			localStorage.setItem(`favorites-${username}`, JSON.stringify(favorites));
+		},
+		[ favorites, username ]
 	);
 
 	// pass book object as a parameter

@@ -28,7 +28,7 @@ import AppContextProvider from './Components/Context/AppContext';
 const App = () => {
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ token, setToken ] = useState(localStorage.getItem('token')); // retrieve the value of the token key from LS
-	const [ isLoggedIn, setIsLoggedIn ] = useState(false); // isLoggedIn gets updated based on the presence of a token
+	const [ isLoggedIn, setIsLoggedIn ] = useState(!!token); // isLoggedIn gets updated based on the presence of a token
 	LibraryApi.token = token;
 
 	console.debug('App', 'currentUser=', currentUser, 'token=', token);
@@ -89,7 +89,7 @@ const App = () => {
 
 	return (
 		<React.Fragment>
-			<AppContextProvider isLoggedIn={isLoggedIn}>
+			<AppContextProvider isLoggedIn={isLoggedIn} username={currentUser?.username}>
 				<div className="App page-container">
 					<NavBar user={token} logout={logout} />
 					<div className="page-content">
