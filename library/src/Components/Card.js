@@ -11,7 +11,7 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
  */
 
 const Card = ({ book, openModal }) => {
-	console.log(book);
+	// console.log(book);
 
 	const hasCover = book.cover_i;
 	const coverUrl = hasCover ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null;
