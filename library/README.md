@@ -1,6 +1,8 @@
 # NOVEL PURSUIT
 
-Frontend for Novel Pursuit app.
+Front end for Novel Pursuit app.
+
+The frontend allows a user to search for a book by the book's title, author or ISBN using the Open Library API. In addition, it handles user Signup and Login forms. The web application allows a user to save, view and remove a book from "Bookmarks". It also includes a Footer and a dynamic navigation bar. 
 
 ## Tools and Libraries
 
