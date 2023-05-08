@@ -18,10 +18,11 @@ import AppContextProvider from './Components/Context/AppContext';
  * 
  * - useEffect is used to fetch user data whenever the token changes.
  * - signup, login, and logout functions manage user authentication and the JWT token stored in LS.
+ * - jwt_decode is used to decode the JWT token and obtain user information.
  * - useEffect will run whenever the token value changes to ensure that the user information is fetched and
  *    updated based on the changes to the token.
- * - bookmarks function to handle a user saving "bookmarking" a book.
- * - When a user logs in, the token and isLoggedIn gets updated based off the presence of a token and is set to true.
+ * - React Router is used for handling navigation and rendering different components based on the URL path.
+ * - AppContextProvider is used for managing the application's state.
  * 
 */
 
