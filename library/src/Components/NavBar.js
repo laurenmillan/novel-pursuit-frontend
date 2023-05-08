@@ -6,7 +6,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 /** Displays dynamic navbar components.
  * 
  * - props: user and logout, passed down from the App component.
- * - user represents current user.
+ * - user represents the current user's authentication token.
  * - logout is a function that logs out the user when called.
  * 
 */
