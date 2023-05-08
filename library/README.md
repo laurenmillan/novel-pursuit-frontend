@@ -12,6 +12,10 @@ Frontend for Novel Pursuit app.
 - [React Icons](https://react-icons.github.io/react-icons/): A collection of popular icon sets for React applications.
 - [Font Awesome](https://fontawesome.com/): A popular icon library and toolkit.
 
+## Tests
+
+- [Jest](https://jestjs.io/): A JavaScript testing framework for unit testing React components and other JavaScript code.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
