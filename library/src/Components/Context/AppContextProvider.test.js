@@ -5,10 +5,11 @@ import AppContextProvider, { useAppContext } from './AppContext';
 
 /** Mock component to simulate the usage of the AppContext.
  * 
- * - checks if addToFavorites correctly adds a book to the list of favorites.
- * - checks if removeFromFavorites removes a book from the list. 
- * - The test creates a TestComponent that uses the AppContext to access and manipulate the favorites list. 
+ * - The test creates a TestComponent that uses the AppContext to access and manipulate the favorites list.
+ * - Checks if addToFavorites correctly adds a book to the list of favorites.
+ * - Checks if removeFromFavorites removes a book from the list.  
  * - The test then clicks the buttons to add and remove books from the favorites and checks whether the expected behavior occurs.
+ * - Checks whether the user's book is being stored in LS correctly.
  * 
 */
 
@@ -46,4 +47,39 @@ test('addToFavorites and removeFromFavorites work correctly', () => {
 
 	fireEvent.click(removeBook1Button);
 	expect(screen.queryByText(book1)).not.toBeInTheDocument();
+});
+
+test('favorites are stored in local storage', () => {
+	const username = 'testuser';
+	const book1 = { key: 'book1', title: 'Book 1' };
+	const book2 = { key: 'book2', title: 'Book 2' };
+
+	// Add a book to favorites
+	render(
+		<AppContextProvider username={username}>
+			<TestComponent />
+		</AppContextProvider>
+	);
+	const addBook1Button = screen.getByText('Add Book 1 to Favorites');
+	fireEvent.click(addBook1Button);
+
+	// Check if the book is stored in LS
+	const storedFavorites = localStorage.getItem(`favorites-${username}`);
+	expect(JSON.parse(storedFavorites)).toEqual([ book1 ]);
+
+	// Add another book to favorites
+	const addBook2Button = screen.getByText('Add Book 2 to Favorites');
+	fireEvent.click(addBook2Button);
+
+	// Check if both books are stored in LS
+	const updatedStoredFavorites = localStorage.getItem(`favorites-${username}`);
+	expect(JSON.parse(updatedStoredFavorites)).toEqual([ book1, book2 ]);
+
+	// Remove a book from favorites
+	const removeBook1Button = screen.getByText('Remove Book 1 from Favorites');
+	fireEvent.click(removeBook1Button);
+
+	// Check if the removed book is no longer stored in LS
+	const finalStoredFavorites = localStorage.getItem(`favorites-${username}`);
+	expect(JSON.parse(finalStoredFavorites)).toEqual([ book2 ]);
 });
