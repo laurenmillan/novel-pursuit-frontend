@@ -6,6 +6,14 @@ The frontend allows a user to search for a book by the book's title, author or I
 
 ![NOVEL PURSUIT](./ezgif.com-video-to-gif.gif)
 
+## Table of Contents
+
+- [Tools and Libraries](#Tools-and-Libraries) </br>
+- [Tests](#Tests) </br>
+- [Available Scripts](#Available-Scripts) </br>
+- [Learn More](#Learn-More) </br>
+- [Deployment](#Deployment) </br>
+
 
 ## Tools and Libraries
 
