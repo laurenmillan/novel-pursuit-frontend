@@ -68,7 +68,9 @@ const LoginForm = ({ login }) => {
 									<Form.Group className="mb-3">
 										<Form.Label htmlFor="username">Username</Form.Label>
 										<Form.Control
+											id="username"
 											type="text"
+											aria-label="username"
 											name="username"
 											value={formData.username}
 											onChange={handleChange}
@@ -81,7 +83,9 @@ const LoginForm = ({ login }) => {
 									<Form.Group className="mb-3">
 										<Form.Label htmlFor="password">Password</Form.Label>
 										<Form.Control
+											id="password"
 											type="password"
+											aria-label="password"
 											name="password"
 											value={formData.password}
 											onChange={handleChange}
