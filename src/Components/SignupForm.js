@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 /** Renders a Signup Form. 
  * 
  * - When the user successfully signs up, navigate to root.
+ * - An Alert message will appear if a username or email already exists.
  * 
 */
 
 const SignupForm = ({ signup }) => {
 	console.debug('SignupForm');
 
+	const [ errorMessage, setErrorMessage ] = useState(null);
 	const [ isSuccess, setIsSuccess ] = useState(false);
 	const [ validated, setValidated ] = useState(false);
 	const [ formData, setFormData ] = useState({
@@ -47,11 +49,11 @@ const SignupForm = ({ signup }) => {
 				setIsSuccess(res.success);
 			} catch (error) {
 				console.error(error);
-				const errorMessage =
+				const errMessage =
 					error.response && error.response.status === 409
-						? 'Username or email already exists'
-						: 'An error occurred while signing up';
-				alert(errorMessage);
+						? 'An error occurred while signing up'
+						: 'Username or email already exists. Username & email must be unique.';
+				setErrorMessage(errMessage);
 			}
 		}
 		setValidated(true);
@@ -63,11 +65,14 @@ const SignupForm = ({ signup }) => {
 				<Card>
 					<Card.Body>
 						<h2 className="mb-3">Sign Up</h2>
+						{errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 						<Form noValidate validated={validated} onSubmit={handleSubmit}>
 							<Form.Group className="mb-3">
 								<Form.Label htmlFor="username">Username</Form.Label>
 								<Form.Control
+									id="username"
 									type="text"
+									aria-label="username"
 									name="username"
 									value={formData.username}
 									onChange={handleChange}
@@ -81,7 +86,9 @@ const SignupForm = ({ signup }) => {
 							<Form.Group className="mb-3">
 								<Form.Label htmlFor="password">Password</Form.Label>
 								<Form.Control
+									id="password"
 									type="password"
+									aria-label="password"
 									name="password"
 									value={formData.password}
 									onChange={handleChange}
@@ -100,6 +107,7 @@ const SignupForm = ({ signup }) => {
 								<Form.Label htmlFor="first-name">First Name</Form.Label>
 								<Form.Control
 									type="text"
+									aria-label="firstName"
 									name="firstName"
 									value={formData.firstName}
 									onChange={handleChange}
@@ -113,6 +121,7 @@ const SignupForm = ({ signup }) => {
 								<Form.Label htmlFor="last-name">Last Name</Form.Label>
 								<Form.Control
 									type="text"
+									aria-label="lastName"
 									name="lastName"
 									value={formData.lastName}
 									onChange={handleChange}
@@ -126,6 +135,7 @@ const SignupForm = ({ signup }) => {
 								<Form.Label htmlFor="email">Email</Form.Label>
 								<Form.Control
 									type="email"
+									aria-label="email"
 									name="email"
 									value={formData.email}
 									onChange={handleChange}
@@ -136,7 +146,7 @@ const SignupForm = ({ signup }) => {
 							</Form.Group>
 
 							<Button variant="primary" type="submit">
-								Sign Up
+								Sign Up!
 							</Button>
 						</Form>
 					</Card.Body>

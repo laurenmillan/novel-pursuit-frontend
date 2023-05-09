@@ -64,9 +64,10 @@ const App = () => {
 			return { success: true };
 		} catch (error) {
 			console.error('Failed to signup:', error);
-			return { success: false, error };
-		}
+			const err = { success: false, error };
+			throw err;
 	}
+}
 
 	async function login(loginData) {
 		try {
@@ -89,7 +90,7 @@ const App = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			<AppContextProvider isLoggedIn={isLoggedIn} username={currentUser?.username}>
 				<div className="App page-container">
 					<NavBar user={token} logout={logout} />
@@ -110,7 +111,7 @@ const App = () => {
 					<Footer />
 				</div>
 			</AppContextProvider>
-		</React.Fragment>
+		</>
 	);
 };
 
