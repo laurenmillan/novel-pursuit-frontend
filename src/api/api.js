@@ -5,7 +5,7 @@ const LIBRARY_SEARCH_URL = 'https://openlibrary.org/search.json';
 
 /** API Class.
  *
- * Static class tying together methods used to get/send to to the API.
+ * Static class tying together methods used to get/send to the API.
  *
  */
 
@@ -97,7 +97,6 @@ class LibraryApi {
 
 	static async login(loginData) {
 		let res = await this.request(`auth/token`, loginData, 'post');
-		// console.log(res);
 		return res.token;
 	}
 
@@ -112,7 +111,6 @@ class LibraryApi {
 
 	static async saveProfile(username, data) {
 		const res = await this.request(`users/${username}`, data, 'patch');
-		// console.log(res);
 		return res.user;
 	}
 }
