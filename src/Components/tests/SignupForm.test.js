@@ -9,7 +9,10 @@ import fetchMock from 'jest-fetch-mock';
  * 
  * - Test that the form renders.
  * - Test that the form renders the expected elements.
- * - Test that the form allows a new user to signup successfully.
+ * - Test that the form allows a new user to sign up successfully.
+ * - Test that the form does not submit when required fields are empty.
+ * - Test that the form does not submit when the password is too short.
+ * - Test that the form displays an error message when the username or email already exists.
  * 
  */
 
