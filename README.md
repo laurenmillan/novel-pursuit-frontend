@@ -10,7 +10,7 @@ The frontend allows a user to search for a book by the book's title, author or I
 
 - [Tools and Libraries](#Tools-and-Libraries) </br>
 - [Tests](#Tests) </br>
-- [Available Scripts](#Available-Scripts) </br>
+- [Getting Started](#Getting-Started) </br>
 - [Learn More](#Learn-More) </br>
 - [Deployment](#Deployment) </br>
 
@@ -31,9 +31,13 @@ The frontend allows a user to search for a book by the book's title, author or I
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Getting Started 
 
 In the project directory, you can run:
+
+### `npm install`
+
+This installs all dependencies for the project to run correctly.
 
 ### `npm start`
 
