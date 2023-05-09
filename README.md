@@ -42,11 +42,13 @@ You may also see any lint errors in the console.
 
 - [Jest](https://jestjs.io/): A JavaScript testing framework for unit testing React components and other JavaScript code.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ### `jest` 
 
 Runs tests using Jest.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+<br />
+
+<i><b>Note:</b> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
