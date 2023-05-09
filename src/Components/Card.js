@@ -11,8 +11,6 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
  */
 
 const Card = ({ book, openModal }) => {
-	// console.log(book);
-
 	const hasCover = book.cover_i;
 	const coverUrl = hasCover ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null;
 	const authors = book.author_name ? book.author_name.slice(0, 1) : ''; // Limit results to the first author
