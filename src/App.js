@@ -82,7 +82,6 @@ const App = () => {
 		}
 	}
 
-	/** Logout by clearing app's state, remove user's auth token from browser's LS */
 	function logout() {
 		setCurrentUser(null);
 		setToken(null);

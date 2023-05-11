@@ -22,7 +22,6 @@ const Profile = ({ user, setCurrentUser }) => {
 		email: user?.email || "",
 });
 
-	// disable the Save button when no changes have been made to form
 	const [hasChanged, setHasChanged] = useState(false)
 
 	useEffect(() => {

@@ -52,18 +52,16 @@ const Main = ({ isLoggedIn }) => {
 			} catch (error) {
 				console.error('Search failed to retrieve book information');
 			} finally {
-				setLoading(false); // Set loading to false after fetching data
+				setLoading(false);
 			}
 		}
 	};
 
-	// loadMore loads next page of results
 	const loadMore = () => {
 		setPage((prevPage) => prevPage + 1);
 		searchBook(null, page + 1);
 	};
 
-	// Load More button
 	const renderLoadMoreButton = () => {
 		return !loading && hasMore && bookData.length > 0 ? (
 			<div className="centered-button-container">

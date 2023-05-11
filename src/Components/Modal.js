@@ -16,12 +16,10 @@ import { useAppContext } from './Context/AppContext';
 const Modal = ({ show, item, closeModal, isLoggedIn }) => {
 	const { favorites, addToFavorites, removeFromFavorites } = useAppContext();
 	const [ description, setDescription ] = useState('');
-	const [ loading, setLoading ] = useState(true); // loading state variable for the book description
+	const [ loading, setLoading ] = useState(true);
 
-	// useEffect makes a separate API request to get the description of the book and handle different formats of the description object
 	useEffect(
 		() => {
-			// Reset loading and description states when the item changes
 			setLoading(true);
 			setDescription('');
 
@@ -53,10 +51,7 @@ const Modal = ({ show, item, closeModal, isLoggedIn }) => {
 		return null;
 	}
 
-	// console.log('favorites are', favorites);
-
 	const isBookInFavorites = (key) => {
-		// .some checks if there is at least one element in the favorites array in the condition
 		const found = favorites.some((book) => book.key === key);
 		return found;
 	};
@@ -117,7 +112,6 @@ const Modal = ({ show, item, closeModal, isLoggedIn }) => {
 										if (isLoggedIn) {
 											addToFavorites(item);
 										} else {
-											// Show signup/login prompt
 											alert('You need to Signup or Login to add a Bookmark.');
 										}
 									}}
