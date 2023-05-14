@@ -8,9 +8,9 @@ The frontend allows a user to search for a book by the book's title, author or I
 
 ## Table of Contents
 
-- [Getting Started](#Getting-Started) </br>
-- [Tools and Libraries](#Tools-and-Libraries) </br>
-- [Tests](#Tests) </br>
+- [Getting Started](#Getting-Started) 
+- [Tools and Libraries](#Tools-and-Libraries) 
+- [Tests](#Tests) 
 
 # Getting Started 
 
@@ -22,10 +22,10 @@ This installs all dependencies for the project to run correctly.
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
 
 ## Tools and Libraries
