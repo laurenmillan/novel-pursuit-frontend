@@ -83,7 +83,7 @@ const Main = ({ isLoggedIn }) => {
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			<div className="main-text">
 				<h1>Discover Your Next Great Read</h1>
 				<p>Explore a vast collection of books</p>
@@ -115,7 +115,7 @@ const Main = ({ isLoggedIn }) => {
 				{renderLoadMoreButton()}
 			</div>
 			<Modal show={showModal} item={selectedBook} closeModal={closeModal} isLoggedIn={isLoggedIn} />
-		</React.Fragment>
+		</>
 	);
 };
 

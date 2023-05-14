@@ -13,7 +13,6 @@ import LibraryApi from '../api/api';
  */
 
 const Profile = ({ user, setCurrentUser }) => {
-	console.debug('ProfileForm', 'currentUser=', user, 'formData=', user);
 
 	const [formData, setFormData] = useState({
 		username: user?.username || "",
@@ -42,7 +41,6 @@ const Profile = ({ user, setCurrentUser }) => {
 	}
 
 	const handleSubmit = async (evt) => {
-		console.debug('handleSubmit FormData');
 
 		evt.preventDefault();
 		try {

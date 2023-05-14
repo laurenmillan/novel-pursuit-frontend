@@ -61,7 +61,7 @@ const Modal = ({ show, item, closeModal, isLoggedIn }) => {
 	const author = item.author_name ? item.author_name.slice(0, 1) : '(Information Unavailable)'; // Limit results to the first author
 
 	return (
-		<React.Fragment>
+		<>
 			<div className="overlay" onClick={closeModal}>
 				<div className="overlay-inner">
 					<button className="close" onClick={closeModal}>
@@ -127,7 +127,7 @@ const Modal = ({ show, item, closeModal, isLoggedIn }) => {
 					</div>
 				</div>
 			</div>
-		</React.Fragment>
+		</>
 	);
 };
 

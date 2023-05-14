@@ -16,7 +16,7 @@ const Card = ({ book, openModal }) => {
 	const authors = book.author_name ? book.author_name.slice(0, 1) : ''; // Limit results to the first author
 
 	return (
-		<React.Fragment>
+		<>
 			<div className="main-card" onClick={() => openModal(book)}>
 				{hasCover ? (
 					<img src={coverUrl} alt={book.title} />
@@ -28,7 +28,7 @@ const Card = ({ book, openModal }) => {
 					<h2 className="author">{authors}</h2>
 				</div>
 			</div>
-		</React.Fragment>
+		</>
 	);
 };
 

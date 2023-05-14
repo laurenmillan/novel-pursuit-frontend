@@ -32,8 +32,6 @@ const App = () => {
 	const [ isLoggedIn, setIsLoggedIn ] = useState(!!token); // isLoggedIn gets updated based on the presence of a token
 	LibraryApi.token = token;
 
-	console.debug('App', 'currentUser=', currentUser, 'token=', token);
-
 	useEffect(
 		() => {
 			setIsLoggedIn(!!token);

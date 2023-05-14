@@ -15,8 +15,6 @@ import './style.css';
 const Bookmarks = () => {
 	const { favorites, removeFromFavorites } = useAppContext();
 
-	console.debug('Bookmarks', 'favorites=', favorites);
-
 	return (
 		<div className="bookmarks">
 			<h1 className="h1-title" style={{ fontSize: '3rem' }}>
